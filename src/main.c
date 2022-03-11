@@ -36,7 +36,7 @@ void vTaskUpdateDACBuffer(void * pvParameters)
             while(xQueueIsQueueFullFromISR(xQueueData)==pdFALSE)
             {
                 // ESP_LOGI("update_data", "Data updated!");
-                get_wave(&upBuffer, &acc, (uint16_t)60, (uint8_t)0);
+                get_wave(&upBuffer, &acc, (uint16_t)60, (uint8_t)1);
                 // for(int itr=0; itr<BUF_LEN; itr++) printf("%d ", upBuffer[itr]>>8);
                 // printf("\n\n\n");
                 // for(int ii=0; ii<BUF_LEN; ii++) upBuffer[ii] = (ii%256) << 8;
