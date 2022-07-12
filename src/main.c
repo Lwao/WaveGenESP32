@@ -82,11 +82,11 @@ void get_wave(uint16_t (*data)[BUF_LEN], uint16_t* acc, uint16_t freq, uint8_t w
         case 1: // square
             for(int itr=0; itr<BUF_LEN; itr++)
             {
-                if(*acc>period) *acc=0;
-                if(*acc<period/2) (*data)[itr]=((uint16_t)MAX) << 8;
-                else if(*acc>period/2) (*data)[itr]=((uint16_t)MIN) << 8;
-                else (*data)[itr]=((uint16_t)(MAX-MIN)/2) << 8;
+                if(*acc>=period) *acc=0;
                 (*acc)++;
+                if(*acc<period/2) (*data)[itr]=((uint16_t)MAX) << 8;
+                else if(*acc>=period/2) (*data)[itr]=((uint16_t)MIN) << 8;
+                else (*data)[itr]=((uint16_t)MIN) << 8; //(*data)[itr]=((uint16_t)(MAX-MIN)/2) << 8;
             }
             break;
         case 2: // triangle
